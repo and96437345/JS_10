@@ -1,0 +1,215 @@
+.title {
+    font-size: 25px;
+    margin: 40px;
+    font-weight: 600;
+}
+
+.exercise1 {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    height: 80px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    border: 1px solid rgb(179, 178, 178);
+    &__range {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 90%;
+        height: 20px;
+        background-color: rgb(210, 210, 210);
+    }
+    &__pointer {
+        position: absolute;
+        top: 50%;
+        left: 38%;
+        transform: translateY(-50%);
+        width: 35px;
+        height: 35px;
+        background-color: #4a9aea;
+    }
+}
+
+.exercise2 {  
+    position: relative;
+    width: 60%;
+    height: 800px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    &__image {
+        height: 100%;
+        & img {
+            display: block;
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+    }
+    &__arrow {
+        position: absolute;
+        top: 50%;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        & img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    & .left-arrow {
+        left: 0;
+        transform: translateY(-50%);
+    }
+    & .right-arrow {
+        transform: translateY(-50%) rotate(180deg);
+        right: 0;
+    }
+}
+
+.exercise3 {
+    font-size: 25px;
+    line-height: 40px;
+    max-width: 60%;
+    margin: 0 auto;
+    border: 1px solid;
+    &__title {
+        background-color: #4685e2;
+        color: #fff;
+        font-weight: 600;
+    }
+    &__title-content {
+        font-weight: 400;
+        line-height: 30px;
+        background-color: #a9d6e1;
+        color: #145099;
+        border: 2px solid black;
+    }
+
+}
+
+.exercise4 {
+    font-size: 25px;
+    line-height: 40px;
+    max-width: 60%;
+    margin: 0 auto;
+    &__title {
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+    &__content {
+        text-align: left;
+    }
+    &__button {
+        text-align: center;
+        &-btn {
+            width: 300px;
+            height: 50px;
+            font-size: 30px;
+            margin: 20px auto;
+        }
+    }
+}
+
+.exercise5 {
+    font-size: 30px;
+    width: 30%;
+    padding: 20px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border: 1px solid;
+    margin-bottom: 50px;
+    &__input {
+        display: flex;
+        justify-content: space-between;
+        input {
+            font-size: 20px;
+        }
+    }
+    &__input-btn {
+        margin: 20px 0;
+        width: 100%;
+        height: 50px;
+        font-size: 30px;
+    }
+    &__calendar {
+        &-title {
+            font-weight: 600;
+            margin-bottom: 50px;
+        }
+        &-table {
+            th, td {
+                border: 1px solid black;
+                text-align: center;
+            }
+            
+        }
+    }
+}
+
+.exercise6 {
+    margin: 0 auto;
+    width: 20%;
+    font-size: 40px;
+}
+
+.exercise7__list {
+    font-size: 25px;
+    line-height: 35px;
+    margin-left: 50px;
+    margin-bottom: 50px;
+    &-item {
+        width: fit-content;
+    }
+    & .activeColor {
+        background-color: orange;
+    }
+}
+
+.exercise8 {
+    font-size: 25px;
+    margin-left: 50px;
+    width: 30%;
+    margin-bottom: 50px;
+    &__title+&__title {
+        border-bottom: 1px solid;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+    }
+}
+
+.exercise9 {
+    font-size: 25px;
+    margin: 30px auto;
+    width: 30%;
+    box-sizing: border-box;
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    &__table {
+        display: flex;
+        &-columns {
+            width: 25%;
+            &__list-title {
+                font-weight: 600;
+            }
+            &__list-title,
+            &__list-item {
+                border: 1px solid rgb(175, 175, 175);
+                box-sizing: border-box;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }       
+        }
+    }
+}
