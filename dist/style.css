@@ -25,9 +25,8 @@
 }
 .exercise1__pointer {
   position: absolute;
-  top: 50%;
+  top: calc(50% - 17px);
   left: 38%;
-  transform: translateY(-50%);
   width: 35px;
   height: 35px;
   background-color: #4a9aea;
