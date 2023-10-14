@@ -102,3 +102,152 @@ if (number < newsArray.length) {
 // номер месяца, год, и получить календарь на указанный месяц. 
 // Календарь можно генерировать с помощью таблицы. Начальный день недели
 // всегда должен быть понедельник.
+
+let generateButton = document.querySelector('.exercise5__input-btn');
+generateButton.addEventListener('click', function calendar() {
+    let inputMonth = document.querySelector('.input__month');
+    let month = inputMonth.value - 1;
+    let inputYear = document.querySelector('.input__year');
+    let year = inputYear.value;
+    let dateInput = new Date(year, month, 1);
+    if (year == 0 || month == -1) {
+        dateInput = new Date;
+    }
+    let daysInMonth = 32 - new Date(year, month, 32).getDate();
+    let dayShift = dateInput.getDay()-1;
+    if (dayShift == -1) {
+        dayShift = 6;
+    }
+    let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    let dateTitle = document.querySelector(`.exercise5__calendar-title`)
+    dateTitle.innerHTML = `${monthNames[dateInput.getMonth()]}, ${dateInput.getFullYear()}`;
+    for (let i=1; i<43; i++) {
+        let day = document.querySelector(`.day${i}`)
+        day.innerHTML = null;
+    }
+    for (let i=1; i<=daysInMonth; i++) {
+        let day = document.querySelector(`.day${i+dayShift}`)
+        day.innerHTML = i;
+    }
+});
+
+// Задание 6
+// Создать html-страницу со списком ссылок.
+// Ссылки на внешние источники (которые начинаются с http://)
+// необходимо подчеркнуть пунктиром.
+// Искать такие ссылки в списке и устанавливать им дополнительные стили необходимо с помощью JS.
+
+for (let i=1; i<7; i++) {
+    let link = document.querySelector(`.link${i}`);
+    let str = link.innerHTML;
+    let result = (str.indexOf('http'));
+    if (result == 0) {
+        link.style.textDecoration = "underline dashed";
+    }
+}
+
+// Задание 7
+// Создать html-страницу со списком книг.
+// При щелчке на элемент, цвет текста должен меняться на оранжевый. При повторном щелчке на другую книгу, предыдущей - необходимо возвращать прежний цвет.
+// Если при клике мышкой была зажата клавиша Ctrl, то элемент
+// добавляется/удаляется из выделенных. Если при клике мышкой
+// была зажата клавиша Shift, то к выделению добавляются все
+// элементы в промежутке от предыдущего кликнутого до текущего.
+
+let book1 = document.querySelector('.item1');
+book1.addEventListener('click', function(e){
+    if (e.ctrlKey) {
+        this.classList.add('activeColor');
+      } else {
+        clear();
+    this.classList.add('activeColor');
+    }
+});
+let book2 = document.querySelector('.item2');
+book2.addEventListener('click', function(e){
+    if (e.ctrlKey) {
+        this.classList.add('activeColor');
+      } else {
+        clear();
+    this.classList.add('activeColor');
+    }
+});
+let book3 = document.querySelector('.item3');
+book3.addEventListener('click', function(e){
+    if (e.ctrlKey) {
+        this.classList.add('activeColor');
+      } else {
+        clear();
+    this.classList.add('activeColor');
+    }
+});
+let book4 = document.querySelector('.item4');
+book4.addEventListener('click', function(e){
+    if (e.ctrlKey) {
+        this.classList.add('activeColor');
+      } else {
+        clear();
+    this.classList.add('activeColor');
+    }
+});
+let book5 = document.querySelector('.item5');
+book5.addEventListener('click', function(e){
+    if (e.ctrlKey) {
+        this.classList.add('activeColor');
+      } else {
+        clear();
+    this.classList.add('activeColor');
+    }
+});
+let book6 = document.querySelector('.item6');
+book6.addEventListener('click', function(e){
+    if (e.ctrlKey) {
+        this.classList.add('activeColor');
+      } else {
+        clear();
+    this.classList.add('activeColor');
+    }
+});
+let book7 = document.querySelector('.item7');
+book7.addEventListener('click', function(e){
+    if (e.ctrlKey) {
+        this.classList.add('activeColor');
+      } else {
+        clear();
+    this.classList.add('activeColor');
+    }
+});
+
+function clear() {
+    for (let i=1; i<8; i++) {
+        let book = document.querySelector(`.item${i}`);
+        book.classList.remove('activeColor');
+    }
+}
+
+// Задание 8
+// Создать html-страницу для отображения/редактирования текста.
+// При открытии страницы текст отображается с помощью тега
+// div. При нажатии Ctrl+E, вместо div появляется textarea с тем
+// же текстом, который теперь можно редактировать. При нажатии
+// Ctrl+S, вместо textarea появляет div с уже измененным текстом.
+// Не забудьте выключить поведение по умолчанию для этих сочетаний клавиш.
+
+let div = document.querySelector('.divContent');
+let textarea = document.querySelector('.textareaContent');
+let contentIn = div.innerHTML;
+document.addEventListener('keydown', function(event) {
+    if(event.ctrlKey && ['E','e'].includes(event.key)) {
+        div.style.display = "none"
+        textarea.innerHTML = contentIn;
+        textarea.classList.remove('textareaEdit');
+    }
+});
+document.addEventListener('keydown', function(event) {
+    if(event.ctrlKey && ['S','s'].includes(event.key)) {
+        div.innerHTML = textarea.value;
+        textarea.classList.add('textareaEdit');
+        div.style.display = "block";
+    }
+})
+

@@ -128,7 +128,7 @@
 
 .exercise5 {
   font-size: 30px;
-  width: 30%;
+  width: 760px;
   padding: 20px;
   margin: 0 auto;
   box-sizing: border-box;
@@ -162,6 +162,9 @@
   width: 20%;
   font-size: 40px;
 }
+.exercise6 a {
+  text-decoration: none;
+}
 
 .exercise7__list {
   font-size: 25px;
@@ -186,6 +189,15 @@
   border-bottom: 1px solid;
   margin-bottom: 20px;
   padding-bottom: 10px;
+}
+.exercise8 .textareaContent {
+  font-size: 25px;
+  font-family: "Times New Roman", Times, serif;
+  padding: 0;
+  margin: 0;
+}
+.exercise8 .textareaEdit {
+  display: none;
 }
 
 .exercise9 {
