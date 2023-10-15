@@ -25,7 +25,6 @@ nextButton.addEventListener('click', function() {
         let imagePrev = document.querySelector(`.image${i-1}`);
         image.classList.add("imageActive");
         imagePrev.classList.remove("imageActive");
-        console.log(i)
     }
 });
 
@@ -36,7 +35,6 @@ prevButton.addEventListener('click', function() {
         let imageNext = document.querySelector(`.image${i+1}`);
         image.classList.add("imageActive");
         imageNext.classList.remove("imageActive");
-        console.log(i)
     }    
 });
 
@@ -44,35 +42,19 @@ prevButton.addEventListener('click', function() {
 // Создать html-страницу с блоками информации, которые открываются по щелчку на заголовок. В один момент времени может
 // быть развернут только один блок информации.
 
-let title1 = document.querySelector('.title1');
-let content1 = document.querySelector('.content1')
-let title2 = document.querySelector('.title2');
-let content2 = document.querySelector('.content2')
-let title3 = document.querySelector('.title3');
-let content3 = document.querySelector('.content3')
-let title4 = document.querySelector('.title4');
-let content4 = document.querySelector('.content4')
-title1.addEventListener('click', function() {
-    closeAll();
-    content1.classList.remove("noContent");
-})
-title2.addEventListener('click', function() {
-    closeAll();
-    content2.classList.remove("noContent");
-})
-title3.addEventListener('click', function() {
-    closeAll();
-    content3.classList.remove("noContent");
-})
-title4.addEventListener('click', function() {
-    closeAll();
-    content4.classList.remove("noContent");
-})
+let titleList = document.querySelectorAll('.exercise3__title');
+let contentList = document.querySelectorAll('.exercise3__title-content');
+for (let i=0; i<4; i++) {
+    titleList[i].addEventListener('click', function() {
+        closeAll();
+        contentList[i].classList.remove("noContent");
+    })
+}
+
 function closeAll() {
     for (let i=1; i<5; i++) {
         let content = document.querySelector(`.content${i}`);
         content.classList.add("noContent");
-        console.log(content);
     }
 }
 
@@ -84,16 +66,18 @@ function closeAll() {
 // конца страницы, используйте кнопку в конце списка новостей.
 
 let nextNews = document.querySelector('.exercise4__button-btn');
-let news1 = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
-let news2 = 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).'
-let news3 = 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.'
+let news1 = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.';
+let news2 = 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).';
+let news3 = 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.';
 let newsArray = [news1, news2, news3];
 let number = 0;
 let newsDiv = document.querySelector('.exercise4__content1');
 if (number < newsArray.length) {
     nextNews.addEventListener('click', function() {
         newsDiv.innerHTML += newsArray[number];
-        number++ ;
+        if (number == newsArray.length) {
+            number = 0;
+        }
     });
 };
 
@@ -119,14 +103,14 @@ generateButton.addEventListener('click', function calendar() {
         dayShift = 6;
     }
     let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    let dateTitle = document.querySelector(`.exercise5__calendar-title`)
+    let dateTitle = document.querySelector(`.exercise5__calendar-title`);
     dateTitle.innerHTML = `${monthNames[dateInput.getMonth()]}, ${dateInput.getFullYear()}`;
     for (let i=1; i<43; i++) {
-        let day = document.querySelector(`.day${i}`)
+        let day = document.querySelector(`.day${i}`);
         day.innerHTML = null;
     }
     for (let i=1; i<=daysInMonth; i++) {
-        let day = document.querySelector(`.day${i+dayShift}`)
+        let day = document.querySelector(`.day${i+dayShift}`);
         day.innerHTML = i;
     }
 });
@@ -154,74 +138,22 @@ for (let i=1; i<7; i++) {
 // была зажата клавиша Shift, то к выделению добавляются все
 // элементы в промежутке от предыдущего кликнутого до текущего.
 
-let book1 = document.querySelector('.item1');
-book1.addEventListener('click', function(e){
-    if (e.ctrlKey) {
+let book = document.querySelectorAll('.exercise7__list-item');
+for (let i=0; i<7 ; i++) {
+    book[i].addEventListener('click', function(e){
+        if (e.ctrlKey) {
+            book[i].classList.toggle('activeColor');
+          } else {
+            clear();
         this.classList.add('activeColor');
-      } else {
-        clear();
-    this.classList.add('activeColor');
-    }
-});
-let book2 = document.querySelector('.item2');
-book2.addEventListener('click', function(e){
-    if (e.ctrlKey) {
-        this.classList.add('activeColor');
-      } else {
-        clear();
-    this.classList.add('activeColor');
-    }
-});
-let book3 = document.querySelector('.item3');
-book3.addEventListener('click', function(e){
-    if (e.ctrlKey) {
-        this.classList.add('activeColor');
-      } else {
-        clear();
-    this.classList.add('activeColor');
-    }
-});
-let book4 = document.querySelector('.item4');
-book4.addEventListener('click', function(e){
-    if (e.ctrlKey) {
-        this.classList.add('activeColor');
-      } else {
-        clear();
-    this.classList.add('activeColor');
-    }
-});
-let book5 = document.querySelector('.item5');
-book5.addEventListener('click', function(e){
-    if (e.ctrlKey) {
-        this.classList.add('activeColor');
-      } else {
-        clear();
-    this.classList.add('activeColor');
-    }
-});
-let book6 = document.querySelector('.item6');
-book6.addEventListener('click', function(e){
-    if (e.ctrlKey) {
-        this.classList.add('activeColor');
-      } else {
-        clear();
-    this.classList.add('activeColor');
-    }
-});
-let book7 = document.querySelector('.item7');
-book7.addEventListener('click', function(e){
-    if (e.ctrlKey) {
-        this.classList.add('activeColor');
-      } else {
-        clear();
-    this.classList.add('activeColor');
-    }
-});
+        }
+    });
+}
 
 function clear() {
     for (let i=1; i<8; i++) {
-        let book = document.querySelector(`.item${i}`);
-        book.classList.remove('activeColor');
+        let bookClear = document.querySelector(`.item${i}`);
+        bookClear.classList.remove('activeColor');
     }
 }
 
@@ -238,16 +170,134 @@ let textarea = document.querySelector('.textareaContent');
 let contentIn = div.innerHTML;
 document.addEventListener('keydown', function(event) {
     if(event.ctrlKey && ['E','e'].includes(event.key)) {
-        div.style.display = "none"
+        event.preventDefault();
+        div.style.display = "none";
         textarea.innerHTML = contentIn;
         textarea.classList.remove('textareaEdit');
     }
 });
 document.addEventListener('keydown', function(event) {
     if(event.ctrlKey && ['S','s'].includes(event.key)) {
+        event.preventDefault();
         div.innerHTML = textarea.value;
         textarea.classList.add('textareaEdit');
         div.style.display = "block";
     }
 })
+
+// Задание 9
+// Создать html-страницу с большой таблицей.
+// При клике по заголовку колонки, необходимо отсортировать
+// данные по этой колонке. Например: на скриншоте люди отсортированы по возрасту. Учтите, что числовые значения должны
+// сортироваться как числа, а не как строки.
+
+class Man {
+    constructor(firstName, lastName, age, company) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+    this.company = company;
+    }
+}
+
+let man1 = new Man('Mark', 'Zuckerberg', '34', 'Facebook');
+let man2 = new Man('Larry', 'Page', '45', 'Google');
+let man3 = new Man('Timothy', 'Cook', '57', 'Apple');
+let man4 = new Man('Bill', 'Gates', '62', 'Microsoft');
+let manArray = [man1, man2, man3, man4];
+let table = document.querySelector('.man__table');
+
+function makeTable(array) {
+    table.innerHTML = '';
+    for (let i=0; i<array.length; i++) {
+        let firstName = array[i].firstName;
+        let lastName = array[i].lastName;
+        let age = array[i].age;
+        let company = array[i].company;
+        let tableRow = `<tr>
+                        <td>${firstName}</td>
+                        <td>${lastName}</td>
+                        <td>${age}</td>
+                        <td>${company}</td>
+                        <tr/>`
+        table.innerHTML += tableRow;
+    }
+}
+
+makeTable(manArray);
+let header = document.querySelectorAll('.th');
+for (let i=0; i<header.length; i++) {
+    header[i].addEventListener('click', () => {
+        if (i == 0) {
+            manArray.sort(function(a, b) {
+                let textA = a.firstName.toUpperCase();
+                let textB = b.firstName.toUpperCase();
+                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+            });
+        }
+        if (i == 1) {
+            manArray.sort(function(a, b) {
+                let textA = a.lastName.toUpperCase();
+                let textB = b.lastName.toUpperCase();
+                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+            });
+        }
+        if (i == 2) {
+            manArray.sort(function(a, b) {
+                return parseFloat(a.age) - parseFloat(b.age);
+            });
+        }
+        if (i == 3) {
+            manArray.sort(function(a, b) {
+                let textA = a.company.toUpperCase();
+                let textB = b.company.toUpperCase();
+                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+            });
+        }
+        makeTable(manArray);
+        console.log('Нажато '+i);
+    });
+}
+
+
+// let header1 = document.querySelector('.th1');
+// let header2 = document.querySelector('.th2');
+// let header3 = document.querySelector('.th3');
+// let header4 = document.querySelector('.th4');
+// header1.addEventListener('click', function() {
+//     manArray.sort(function(a, b) {
+//         let textA = a.firstName.toUpperCase();
+//         let textB = b.firstName.toUpperCase();
+//         return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+//     });
+//     makeTable(manArray);
+// });
+// header2.addEventListener('click', function() {
+//     manArray.sort(function(a, b) {
+//         let textA = a.lastName.toUpperCase();
+//         let textB = b.lastName.toUpperCase();
+//         return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+//     });
+//     makeTable(manArray);
+// });
+// header3.addEventListener('click', function() {
+//     manArray.sort(function(a, b) {
+//         return parseFloat(a.age) - parseFloat(b.age);
+//     });
+//     makeTable(manArray);
+// })
+// header4.addEventListener('click', function() {
+//     manArray.sort(function(a, b) {
+//         let textA = a.company.toUpperCase();
+//         let textB = b.company.toUpperCase();
+//         return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+//     });
+//     makeTable(manArray);
+// })
+
+
+
+
+
+
 
