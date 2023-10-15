@@ -75,6 +75,7 @@ let newsDiv = document.querySelector('.exercise4__content1');
 if (number < newsArray.length) {
     nextNews.addEventListener('click', function() {
         newsDiv.innerHTML += newsArray[number];
+        number++ ;
         if (number == newsArray.length) {
             number = 0;
         }
