@@ -144,9 +144,23 @@ for (let i=0; i<7 ; i++) {
     book[i].addEventListener('click', function(e){
         if (e.ctrlKey) {
             book[i].classList.toggle('activeColor');
-          } else {
+        }
+        else if (e.shiftKey) {
+            document.getSelection().removeAllRanges();
+            let markBook = document.querySelector('.activeColor');
+            if (markBook.value <= i) {
+                for (let j = markBook.value; j <= i; j++) {
+                    book[j].classList.add('activeColor');
+                    }
+            } else {
+                for (let j = markBook.value; j > i; j--) {
+                    book[j-1].classList.add('activeColor');
+                    }
+            }
+        } 
+        else {
             clear();
-        this.classList.add('activeColor');
+            this.classList.add('activeColor');
         }
     });
 }
